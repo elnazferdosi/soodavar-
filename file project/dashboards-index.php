@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-require_once 'validate.php';
-require 'name.php';
-?>
-
 <html
   lang="fa"
   class="light-style layout-navbar-fixed layout-menu-fixed"
@@ -214,7 +209,7 @@ require 'name.php';
 
               <ul class="menu-sub">
                 <li class="menu-item active">
-                  <a href="dashboards-pages.php" class="menu-link">
+                  <a href="dashboards-index.php" class="menu-link">
                     <div> صفحه اصلی </div>
                   </a>
                 </li>
@@ -626,7 +621,7 @@ require 'name.php';
                     <li>
                       <a
                         class="dropdown-item"
-                        href="pages-account-settings-account.php"
+                        href="account-settings-account.php"
                       >
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">

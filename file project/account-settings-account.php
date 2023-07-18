@@ -76,7 +76,7 @@
   class="layout-menu menu-vertical menu bg-menu-theme"
 >
   <div class="app-brand demo">
-    <a href="pages.php" class="app-brand-link">
+    <a href="index.php" class="app-brand-link">
       <span class="app-brand-logo demo">
         <svg
           width="25"
@@ -169,7 +169,7 @@
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="dashboards-pages.php" class="menu-link">
+          <a href="dashboards-index.php" class="menu-link">
             <div> صفحه اصلی </div>
           </a>
         </li>
@@ -571,7 +571,7 @@
             >
               <div class="avatar avatar-online">
                 <img
-                  src="assets/img/avatars/1.png"
+                  src="assets/img/avatars/user.png"
                   alt
                   class="w-px-40 h-auto rounded-circle"
                 />
@@ -581,13 +581,13 @@
               <li>
                 <a
                   class="dropdown-item"
-                  href="pages-account-settings-account.php"
+                  href="account-settings-account.php"
                 >
                   <div class="d-flex">
                     <div class="flex-shrink-0 me-3">
                       <div class="avatar avatar-online">
                         <img
-                          src="assets/img/avatars/1.png"
+                          src="assets/img/avatars/user.png"
                           alt
                           class="w-px-40 h-auto rounded-circle"
                         />
@@ -691,7 +691,7 @@
       <!-- Account -->
       <div class="card-body">
         <div class="d-flex align-items-start align-items-sm-center gap-4">
-          <img src="assets/img/avatars/1.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+          <img src="assets/img/avatars/user.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
           <div class="button-wrapper">
             <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
               <span class="d-none d-sm-block">بارگذاری عکس جدید</span>

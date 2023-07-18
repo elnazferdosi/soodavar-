@@ -83,7 +83,7 @@
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-4 p-sm-5">
       <div class="w-px-400 mx-auto">
         <div class="app-brand mb-5">
-          <a href="pages.php" class="app-brand-link gap-2">
+          <a href="index.php" class="app-brand-link gap-2">
             <span class="app-brand-logo demo">
 
 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -127,7 +127,7 @@
         <p class="text-start">
         لینک تایید ایمیل به آدرس ایمیل زیر ارسال شد: n_ahmadi@gmail.com
         </p>
-        <a class="btn btn-primary w-100 my-3" href="pages.php">
+        <a class="btn btn-primary w-100 my-3" href="index.php">
           فعلا تایید نمیکنم
         </a>
         <p class="text-center">لینک تایید ایمیل را دریافت نکردید؟

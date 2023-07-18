@@ -1,34 +1,84 @@
 <?php
-include 'connect.php';
-    // بررسی فرم عضویت کاربر
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = $_POST["username"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+include_once "connect.php";
 
-        // اعتبارسنجی کاربران تکراری
-        $checkUserSQL = "SELECT * FROM users WHERE username = ?";
-        $stmt = $conn->prepare($checkUserSQL);
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $checkUserResult = $stmt->get_result();
+if (isset($_SESSION['login'])) {
+  header("location: index.php");
+}
 
-        if ($checkUserResult->num_rows == 0) {
-            // کاربر جدید را به دیتابیس اضافه کنید
-            $insertUserSQL = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-            $stmt = $conn->prepare($insertUserSQL);
-            $stmt->bind_param("sss", $username, $email, $password);
-            if ($stmt->execute()) {
-                session_start();
-                $_SESSION["username"] = $username;
-                $_SESSION["password"] = $Password;
-                header("Location: login.php");
-                exit();
-            } else {
-                echo "خطا در ایجاد کاربر: " . $conn->error;
-            }
-        } else {
-            echo "نام کاربری وارد شده تکراری می باشد";
-        }
+$message = null;
+$username = null;
+$email = null;
+$password = null;
+$confpassword = null;
+
+function dataIsValid()
+{
+  global $message, $email, $conn;
+  if (!isset($_POST['username']) || empty($_POST['username'])) {
+    $message = "نام کاربری را وارد کنید";
+    return false;
+  }
+  if (!isset($_POST['email']) || empty($_POST['email'])) {
+    $message = "ایمیل را وارد کنید";
+    return false;
+  }
+  if (!isset($_POST['password']) || empty($_POST['password'])) {
+    $message = "رمزعبور را وارد کنید";
+    return false;
+  }
+  if (!isset($_POST['confpassword']) || empty($_POST['confpassword'])) {
+    $message = "رمزعبور را تکرار کنید";
+    return false;
+  }
+  if ($_POST['password'] != $_POST['confpassword']) {
+    $message = "رمزعبور با تکرار آن یکسان نیست";
+    return false;
+  }
+  if (!isset($_POST['terms'])) {
+    $message = "لطفا با قوانین و شرایط سوداور موافقت نمایید";
+    return false;
+  }
+
+  $sql = "SELECT * FROM users WHERE email = '$email'";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result) > 0) {
+    $message = "حساب کاربری وارد شده، تکراری است";
+    return false;
+  }
+  return true;
+}
+
+if (isset($_POST['email'])) {
+
+  // user data
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $confpassword = $_POST['confpassword'];
+
+  if (dataIsValid()) {
+    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO users (username,email,password) VALUES
+    ('$username','$email','$hashPassword')";
+
+    if (mysqli_query($conn, $sql)) {
+      $message = "حساب کاربری با موفقیت ایجاد شد";
+
+      //clear all inputs
+      $username = null;
+      $email = null;
+      $password = null;
+      $confpassword = null;
+
+    } else {
+      $message = "خطا در ایجاد حساب کاربری!";
     }
+  }
+}
+
+if ($message) {
+  echo '<script>alert("' . $message . '")</script>';
+}
 ?>

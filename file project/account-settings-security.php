@@ -76,7 +76,7 @@
       class="layout-menu menu-vertical menu bg-menu-theme"
     >
       <div class="app-brand demo">
-        <a href="pages.php" class="app-brand-link">
+        <a href="index.php" class="app-brand-link">
           <span class="app-brand-logo demo">
             <svg
               width="25"
@@ -174,7 +174,7 @@
 
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="dashboards-pages.php" class="menu-link">
+              <a href="dashboards-index.php" class="menu-link">
                 <div> صفحه اصلی </div>
               </a>
             </li>
@@ -586,7 +586,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    href="pages-account-settings-account.php"
+                    href="account-settings-account.php"
                   >
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">

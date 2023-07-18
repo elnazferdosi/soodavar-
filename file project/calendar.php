@@ -80,7 +80,7 @@
       class="layout-menu menu-vertical menu bg-menu-theme"
     >
       <div class="app-brand demo">
-        <a href="pages.php" class="app-brand-link">
+        <a href="index.php" class="app-brand-link">
           <span class="app-brand-logo demo">
             <svg
               width="25"
@@ -178,7 +178,7 @@
 
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="dashboards-pages.php" class="menu-link">
+              <a href="dashboards-index.php" class="menu-link">
                 <div> صفحه اصلی </div>
               </a>
             </li>
@@ -590,7 +590,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    href="pages-account-settings-account.php"
+                    href="account-settings-account.php"
                   >
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
@@ -786,7 +786,7 @@
               <label class="form-label" for="eventDescription">توضیحات</label>
               <textarea class="form-control" name="eventDescription" id="eventDescription"></textarea>
             </div>
-            
+
             <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
               <div>
                 <button type="submit" class="btn btn-primary btn-add-event me-sm-3 me-1">افزودن</button>

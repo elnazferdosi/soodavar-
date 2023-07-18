@@ -1,5 +1,5 @@
 <?php
-  include "login_query.php";
+    include "register_query.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,21 +13,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>سودآور | ورود به حساب کاربری</title>
+    <title>سودآور | ثبت نام</title>
 
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
-
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
@@ -47,7 +38,6 @@
 <link rel="stylesheet" href="assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
 
     <!-- Page CSS -->
-
     <!-- Page -->
 <link rel="stylesheet" href="assets/vendor/css/pages/page-auth.css">
 
@@ -58,7 +48,7 @@
     <script src="assets/js/config.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script async="async"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -70,6 +60,7 @@
     </script>
     <!-- Custom notification for demo -->
     <!-- beautify ignore:end -->
+
 </head>
 
 <body>
@@ -82,21 +73,21 @@
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
       <div class="w-100 d-flex justify-content-center">
-        <img src="assets/img/illustrations/boy-with-rocket-light.png" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/boy-with-rocket-dark.png" data-app-light-img="illustrations/boy-with-rocket-light.png">
+        <img src="assets/img/illustrations/girl-with-laptop-light.png" class="img-fluid" alt="Login image" width="700" data-app-dark-img="illustrations/girl-with-laptop-dark.png" data-app-light-img="illustrations/girl-with-laptop-light.png">
       </div>
     </div>
     <!-- /Left Text -->
 
-    <!-- Login -->
+    <!-- Register -->
     <div class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg p-sm-5 p-4">
       <div class="w-px-400 mx-auto">
 
         <!-- Logo -->
         <div class="app-brand mb-5">
-          <a href="index`.php" class="app-brand-link gap-2">
+          <a href="index.php" class="app-brand-link gap-2">
             <span class="app-brand-logo demo">
 
-<svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="25" viewBox="0 0 25 42" version="1.1">
   <defs>
     <path d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z" id="path-1"></path>
     <path d="M5.47320593,6.00457225 C4.05321814,8.216144 4.36334763,10.0722806 6.40359441,11.5729822 C8.61520715,12.571656 10.0999176,13.2171421 10.8577257,13.5094407 L15.5088241,14.433041 L18.6192054,7.984237 C15.5364148,3.11535317 13.9273018,0.573395879 13.7918663,0.358365126 C13.5790555,0.511491653 10.8061687,2.3935607 5.47320593,6.00457225 Z" id="path-3"></path>
@@ -130,57 +121,69 @@
 </svg>
 
 </span>
-            <span class="app-brand-text demo text-body fw-bolder">SoodAvar</span>
+            <span class="app-brand-text demo text-body fw-bolder">soodavar</span>
           </a>
         </div>
-
         <!-- /Logo -->
-        <h4 class="mb-2">به سودآور خوش آمدید 👋</h4>
+
+        <h4 class="mb-2">ثبت نام خود را شروع کنید ✍️</h4>
         <p class="mb-4"> </p>
 
         <form action="" method="POST">
+
+          <div class="mb-3">
+          <label for="username" class="form-label">نام کاربری</label>
+            <input type="text" class="form-control" name="username" id="username" aria-describedby="username" placeholder="نام کاربری موردنطر را وارد کنید" value="<?= $username ?>">
+          </div>
+
           <div class="mb-3">
             <label for="email" class="form-label">ایمیل</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="ایمیل خود را وارد کنید" value="<?= $email ?>">
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="email" placeholder="ایمیل خود را وارد کنید" value="<?= $email ?>">
           </div>
+
           <div class="mb-3 form-password-toggle">
-            <div class="d-flex justify-content-between">
-              <label class="form-label" for="password">رمز عبور</label>
-              <a href="forgot-password.php">
-                <small>فراموشی رمز عبور</small>
-              </a>
-            </div>
+            <label class="form-label" for="password">رمز عبور</label>
             <div class="input-group input-group-merge">
-              <input type="password" class="form-control" name="password" id="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" value="<?= $password ?>">
+              <input type="password" class="form-control" name="password" id="password" aria-describedby="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" value="<?= $password ?>">
+              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+            </div>
+          </div>
+
+          <div class="mb-3 form-password-toggle">
+            <label class="form-label" for="confpassword">تکرار رمز عبور</label>
+            <div class="input-group input-group-merge">
+              <input type="password" class="form-control" name="confpassword" id="confpassword" aria-describedby="confpassword" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" value="<?= $confpassword ?>">
               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
             </div>
           </div>
 
           <div class="mb-3">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="remember-me">
-              <label class="form-check-label" for="remember-me">
-                مرا به خاطر بسپار
+              <input class="form-check-input" type="checkbox" name="terms" id="terms">
+              <label class="form-check-label" for="terms-conditions">
+                با
+                <a href="assets/ruls_site.pdf" download>قوانین و شرایط سودآور</a>
+                موافقت میکنم.
               </label>
             </div>
           </div>
 
-          <!-- <a class="text-color" href="index.php"> -->
-          <button class="btn btn-primary d-grid w-100" type="submit" name="login">
-            ورود
+          <button class="btn btn-primary d-grid w-100" name="register">
+            ثبت نام
           </button>
         </form>
 
         <p class="text-center">
-          <span>حساب کاربری ندارید؟</span>
-          <a href="register.php">
-            <span>ساخت حساب کاربری</span>
+          <span>حساب کاربری دارید؟</span>
+          <a href="login.php">
+            <span>ورود به حساب کاربری</span>
           </a>
         </p>
+
         </div>
       </div>
     </div>
-    <!-- /Login -->
+    <!-- /Register -->
   </div>
 </div>
 
@@ -201,11 +204,15 @@
   <!-- endbuild -->
 
   <!-- Vendors JS -->
+  <script src="assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
 <script src="assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
 <script src="assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
 
   <!-- Main JS -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Page JS -->
+  <script src="assets/js/pages-auth.js"></script>
 
 </body>
 

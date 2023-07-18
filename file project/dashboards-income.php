@@ -1,6 +1,8 @@
-<!DOCTYPE html>
+<?php
+  include "income_query.php";
+?>
 
-<?php require_once 'config.php' ?>
+<!DOCTYPE html>
 
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
 
@@ -16,7 +18,7 @@
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Canonical SEO -->
-    <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
+    <link rel="canonical" href="https://themeselection.com/p`roducts/sneat-bootstrap-html-admin-template/">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
@@ -85,7 +87,7 @@
       class="layout-menu menu-vertical menu bg-menu-theme"
     >
       <div class="app-brand demo">
-        <a href="pages.php" class="app-brand-link">
+        <a href="index.php" class="app-brand-link">
           <span class="app-brand-logo demo">
             <svg
               width="25"
@@ -183,7 +185,7 @@
 
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="dashboards-pages.php" class="menu-link">
+              <a href="dashboards-index.php" class="menu-link">
                 <div> صفحه اصلی </div>
               </a>
             </li>
@@ -583,9 +585,9 @@
                 href="javascript:void(0);"
                 data-bs-toggle="dropdown"
               >
-                <div class="avatar avatar-online">
+                <div class="avatar">
                   <img
-                    src="assets/img/avatars/1.png"
+                    src="assets/img/avatars/user.png"
                     alt
                     class="w-px-40 h-auto rounded-circle"
                   />
@@ -595,13 +597,13 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    href="pages-account-settings-account.php"
+                    href="account-settings-account.php"
                   >
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
-                        <div class="avatar avatar-online">
+                        <div class="avatar">
                           <img
-                            src="assets/img/avatars/1.png"
+                            src="assets/img/avatars/user.png"
                             alt
                             class="w-px-40 h-auto rounded-circle"
                           />
@@ -713,25 +715,25 @@
 <div class="offcanvas offcanvas-end" id="add-new-record">
   <div class="offcanvas-header border-bottom">
     <h5 class="offcanvas-title" id="exampleModalLabel">افزودن درآمد</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close text-reset" data-b s-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body flex-grow-1">
-    <form class="add-new-record pt-0 row g-2" id="form-add-new-record" onsubmit="return false">
-      
+    <form action="income_query.php" method="post" enctype="multipart/form-data" class="add-new-record pt-0 row g-2">
+
       <div class="col-sm-12">
         <label class="form-label" for="basicTitlet">عنوان دریافت</label>
         <div class="input-group input-group-merge">
-          <input type="text" id="basicTitlet" class="form-control dt-title_t" name="basicTitlet" aria-describedby="basicTitlet2" />
+          <input type="text" id="basicTitlet" class="form-control dt-title_t" name="title" aria-describedby="basicTitlet2" required>
         </div>
       </div>
-      
+
       <div class="col-sm-12">
         <label class="form-label" for="basicType_get">نوع دریافت</label>
         <div class="input-group input-group-merge">
-          <select id="basicType_get" class="form-control dt-type_get , select2 form-select" name="basicType_get">
-            <option value="">نوع دریافت را انتخاب کنید</option>
-            <option value="cash">نقدی</optio>
-            <option value="atm">واریزی</option>
+          <select id="basicType_get" class="form-control dt-type_get , select2 form-select" name="type" required>
+            <option>نوع دریافت را انتخاب کنید</option>
+            <option value="نقدی">نقدی</option>
+            <option value="واریزی">واریزی</option>
           </select>
         </div>
     </div>
@@ -739,26 +741,24 @@
       <div class="col-sm-12">
         <label class="form-label" for="basicDate">تاریخ دریافت</label>
         <div class="input-group input-group-merge">
-          <span id="basicDate2" class="input-group-text"><i class='bx bx-calendar'></i></span>
-          <input type="text" class="form-control dt-date" id="basicDate" name="basicDate" aria-describedby="basicDate2" placeholder="سال/ماه/روز" aria-label="سال/ماه/روز" />    
+          <span  class="input-group-text"><i class='bx bx-calendar'></i></span>
+          <input type="text" id="basicDate" class="form-control dt-date" name="date" aria-describedby="basicDate2" placeholder="سال-ماه-روز" aria-label="سال-ماه-روز" />
         </div>
       </div>
 
       <div class="col-sm-12">
         <label class="form-label" for="basicSalary">مبلغ دریافت</label>
         <div class="input-group input-group-merge">
-          <span id="basicSalary2" class="input-group-text"><i class='bx bx-dollar'></i></span>
-          <input type="number" id="basicSalary" name="basicSalary" class="form-control dt-salary" placeholder="12000" aria-label="12000" aria-describedby="basicSalary2" />
+          <span  class="input-group-text"><i class='bx bx-dollar'></i></span>
+          <input type="number" id="basicSalary" name="salary" class="form-control dt-salary" placeholder="12000" aria-label="12000"  aria-describedby="basicSalary2" required>
         </div>
       </div>
 
       <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1">تایید</button>
+        <button type="submit" name="submit" class="btn btn-primary data-submit me-sm-3 me-1">تایید</button>
         <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">انصراف</button>
       </div>
     </form>
-
-  <?php require_once 'add_query_income.php'?>
 
   </div>
 </div>
@@ -845,5 +845,4 @@
 
 
 </body>
-
 </html>

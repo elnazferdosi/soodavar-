@@ -86,7 +86,7 @@
       <div class="w-px-400 mx-auto">
         <!-- Logo -->
         <div class="app-brand mb-5">
-          <a href="pages.php" class="app-brand-link gap-2">
+          <a href="index.php" class="app-brand-link gap-2">
             <span class="app-brand-logo demo">
 
 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -134,7 +134,7 @@
           <span class="fw-bold d-block mt-2">aseman******@gmail.com</span>
         </p>
         <p class="mb-0 fw-semibold">کد امنیتی 6 رقمی را وارد کنید</p>
-        <form id="twoStepsForm" action="pages.php" method="POST">
+        <form id="twoStepsForm" action="index.php" method="POST">
           <div class="mb-3">
             <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
               <input type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1" autofocus>
