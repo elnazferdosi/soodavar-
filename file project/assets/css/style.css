@@ -118,6 +118,34 @@
   margin-right: 400px;
 }
 
-.footer_margin{
-  margin-top: 500px;
+
+.width-height{
+  width: 390px;
+  height: 35px;
+}
+
+.text{
+  font-size: 18px;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('assets/svg/icons/glyphicons-halflings-regular.eot');
+  src: url('assets/svg/icons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('assets/svg/icons/glyphicons-halflings-regular.woff2') format('woff2'), url('assets/svg/icons/glyphicons-halflings-regular.woff') format('woff'), url('assets/svg/icons/glyphicons-halflings-regular.ttf') format('truetype'), url('assets/svg/icons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-remove:before {
+  content: "\e014";
 }
