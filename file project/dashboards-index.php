@@ -57,7 +57,7 @@
       class="template-customizer-theme-css"
     />
 
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- Vendors CSS -->
     <link

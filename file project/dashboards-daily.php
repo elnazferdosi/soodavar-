@@ -32,7 +32,7 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -813,7 +813,7 @@
 <script src="assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 <script src="assets/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
 <script src="assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
-<script src="assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.js"></script>
+
 <script src="assets/vendor/libs/datatables-buttons/datatables-buttons.js"></script>
 <script src="assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js"></script>
 <script src="assets/vendor/libs/jszip/jszip.js"></script>
