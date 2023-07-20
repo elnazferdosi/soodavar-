@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
- include 'income_query.php';
+ include 'income_query.php'; 
 ?>
 
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
@@ -37,29 +37,8 @@
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="assets/vendor/libs/typeahead-js/typeahead.css" />
     <link rel="stylesheet" href="assets/vendor/libs/flatpickr/flatpickr.css" />
-
     <!-- Form Validation -->
     <link rel="stylesheet" href="assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
-
-    <!-- jalali -->
-    <link rel="stylesheet" type="text/css" media="all" href="jalali/skins/aqua/theme.css" title="Aqua" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-blue.css" title="winter" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-blue2.css" title="blue" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-brown.css" title="summer" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-green.css" title="green" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-1.css" title="win2k-1" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-2.css" title="win2k-2" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-cold-1.css" title="win2k-cold-1" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-cold-2.css" title="win2k-cold-2" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-system.css" title="system" />
-    <!-- import the Jalali Date Class script -->
-    <script type="text/javascript" src="jalali/jalali.js"></script>
-    <!-- import the calendar script -->
-    <script type="text/javascript" src="jalali/calendar.js"></script>
-    <!-- import the calendar script -->
-    <script type="text/javascript" src="jalali/calendar-setup.js"></script>		
-    <!-- import the language module -->
-    <script type="text/javascript" src="jalali/lang/calendar-fa.js"></script>
 
     <!-- Page CSS -->
 
@@ -698,52 +677,56 @@
 
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">داشبورد /</span> درآمد
+  <span class="text-muted fw-light">داشبورد / درآمد /</span> افزودن درآمد
 </h4>
 
-<!-- table -->
-<div class="container-fluid" dir="rtl">
-<div class="panel panel-default">
-<div class="panel-body">
-<div class="table-responsive">
+<!-- form -->
+<div class = "col-md-4" style = "margin-left:450px">	
+  <form method = "POST" action="dashboards-income.php">				
+    <div class = "form-group">
+      <div class="text">
+        <label>عنوان پرداختی</label>
+        <input type = "text" class = "form-control" name = "title" required = "required" />
+      </div>
+    </div>
+						
+    <div class = "form-group">
+      <label>نوع دریافتی</label>
+      <select class = "form-control" required = "required" name = "type">
+				<option value = ""> نوع دریافتی را انتخاب کنید </option>
+        <br />
+				<option value = "نقدی">نقدی</option>
+        <br />
+        <option value = "واریزی">واریزی</option>
+        <br />
+      </select>
+    </div>
+						
+    <div class = "form-group">
+      <label>تاریخ دریافتی</label>
+      <input type = "date" class = "form-control" name = "date" required = "required" />
+    </div>
 
-<a class="btn btn-primary" href="add-income.php"><i class="bx bx-plus"></i>افزودن درآمد</a>
-<br /> <br />
+    <div class = "form-group">
+      <label>مبلغ دریافتی</label>
+      <input type = "number" min="1000" max="9000000000" class = "form-control" name = "salary" required = "required" />
+    </div>
+    <br />
+						
+    <div class = "form-group">
+      <button name = "save" class = "btn btn-success form-control"> 
+        <ahref="income_query.php"> 
+        <i class = "bx bx-save"> </i>ثبت</button>
+  </div>
+  <br />
+  </form>
 
-  <table id="table" class="table table-striped">
-    <thead>
-      <tr class="active">
-        <th>عنوان دریافتی</th>
-        <th>نوع دریافتی</th>
-        <th>تاریخ دریافتی</th>
-        <th>مبلغ دریافتی (تومان)</th>
-        <th></th>
-      </tr>
-    </thead>
-    <?php
-      $query = $conn->query("SELECT * FROM `income`") or die(mysqli_error());
-      while($fetch = $query->fetch_array()){
-    ?>
 
-      <tr>
-        <td> <?php echo $fetch['title']?> </td>
-        <td> <?php echo $fetch['type']?> </td>
-        <td> <?php echo $fetch['date']?> </td>
-        <td> <?php echo $fetch['salary']?> </td>
-        <td> <center>
-          <a class="btn btn-warning" href="edit_income.php?id=<?php echo $fetch['id']?>"><i class="bx bx-edit"> ویرایش </i></a>
-          <br /> <br />
-          <a class="btn btn-danger" onclick="confirmationDelete(this); return false;" href="delete_income.php?id=<?php echo $fetch['id']?>"><i class="bx bx-error"> حذف </i></a>
-        </center> </td>
-      </tr>
-    <?php
-    }
-    ?>
-  </table>
-</div> </div>
-</div> </div>
-<br /> <br />
-<!--/ table -->
+  <a class="btn btn-danger" href="dashboards-income.php"> <i class="bx bx-error"> </i>انصراف</a>
+  
+</div> 
+</div>
+<!--/ form -->
 
           </div>
           <!-- / Content -->
