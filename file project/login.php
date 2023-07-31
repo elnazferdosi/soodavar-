@@ -1,5 +1,5 @@
 <?php
-  include "login_query.php";
+    include "login_query.php";
 ?>
 
 <!DOCTYPE html>
@@ -138,10 +138,10 @@
         <h4 class="mb-2">به سودآور خوش آمدید 👋</h4>
         <p class="mb-4"> </p>
 
-        <form action="" method="POST">
+        <form method="POST">
           <div class="mb-3">
             <label for="email" class="form-label">ایمیل</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="ایمیل خود را وارد کنید" value="<?= $email ?>">
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="ایمیل خود را وارد کنید" required = "required" />
           </div>
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
@@ -151,7 +151,7 @@
               </a>
             </div>
             <div class="input-group input-group-merge">
-              <input type="password" class="form-control" name="password" id="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" value="<?= $password ?>">
+              <input type="password" class="form-control" name="password" id="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required = "required" />
               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
             </div>
           </div>
@@ -166,9 +166,9 @@
           </div>
 
           <!-- <a class="text-color" href="index.php"> -->
-          <button class="btn btn-primary d-grid w-100" type="submit" name="login">
-            ورود
-          </button>
+          <button class="btn btn-primary d-grid w-100" name="login">
+            <ahref="login_query.php">
+            ورود </button>
         </form>
 
         <p class="text-center">

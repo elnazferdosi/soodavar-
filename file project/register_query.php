@@ -58,10 +58,8 @@ if (isset($_POST['email'])) {
   $confpassword = $_POST['confpassword'];
 
   if (dataIsValid()) {
-    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-
     $sql = "INSERT INTO users (username,email,password) VALUES
-    ('$username','$email','$hashPassword')";
+    ('$username','$email','$password')";
 
     if (mysqli_query($conn, $sql)) {
       $message = "حساب کاربری با موفقیت ایجاد شد";
