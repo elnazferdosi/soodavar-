@@ -10,7 +10,7 @@ include_once "connect.php";
 // }
 
 
-// add income
+// add daily
 $message = null;
 
 function dataIsValid()
@@ -38,16 +38,16 @@ if (isset($_POST['save'])) {
     $type = $_POST['type'];
     $date = $_POST['date'];
     $salary = $_POST['salary'];
-    $add = mysqli_query($conn, "INSERT INTO income (`title` ,`type` ,`date` ,`salary`) VALUES ('$title', '$type', '$date', '$salary')");
+    $add = mysqli_query($conn, "INSERT INTO daily (`title` ,`type` ,`date` ,`salary`) VALUES ('$title', '$type', '$date', '$salary')");
     if ($add) {
-      $message = "درآمد با موفقیت ثبت شد";
+      $message = "خرجی با موفقیت ثبت شد";
     } else {
-      $message = "خطا در افزودن درآمد !";
+      $message = "خطا در افزودن خرجی !";
     }
   }
 }
 
-// edit income
+// edit daily
 function editDataIsValid()
 {
   global $message;
@@ -75,32 +75,32 @@ if (isset($_POST['edit'])) {
     $date = $_POST['date'];
     $salary = $_POST['salary'];
     $id = $_POST['id'];
-    $edit = mysqli_query($conn,"UPDATE income SET title='$title', type='$type' , date = '$date', salary = '$salary'  WHERE id='$id'  ");
+    $edit = mysqli_query($conn,"UPDATE daily SET title='$title', type='$type' , date = '$date', salary = '$salary'  WHERE id='$id'  ");
     if ($edit) {
-      $message = "درآمد موردنظر با موفقیت ویرایش شد";
+      $message = "خرجی موردنظر با موفقیت ویرایش شد";
     } else {
-      $message = "خطا در ویرایش درآمد !";
+      $message = "خطا در ویرایش خرجی !";
     }
   }       
 }
 
-//delete income
+//delete daily
 if (isset($_GET['delete'])) {
   $id = $_GET['delete'];
 
 
-  //delete income message 
-  $sql = "DELETE FROM income WHERE id='$id'";
+  //delete daily message 
+  $sql = "DELETE FROM daily WHERE id='$id'";
 
   if ($conn->query($sql) === TRUE) {
-    $message = "درآمد موردنظر با موفقیت حذف شد";
+    $message = "خرجی موردنظر با موفقیت حذف شد";
   } else {
-    $message = "خطا در حذف درآمد !";
+    $message = "خطا در حذف خرجی !";
   }
 }
 
-// get all income
-$query = mysqli_query($conn, "select * from  income");
+// get all daily
+$query = mysqli_query($conn, "select * from  daily");
 
 if ($message) {
   echo '<script>alert("' . $message . '")</script>';

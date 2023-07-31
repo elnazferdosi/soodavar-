@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+<?php
+ include 'daily_query.php';
+?>
+
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
 
   <head>
@@ -16,9 +20,6 @@
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,27 +27,23 @@
 
     <!-- Icons -->
     <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="assets/vendor/fonts/flag-icons.css" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/in&da&bi.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
-    <link rel="stylesheet" href="assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
-    <link rel="stylesheet" href="assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+    <link rel="stylesheet" href="assets/vendor/libs/typeahead-js/typeahead.css" />
     <link rel="stylesheet" href="assets/vendor/libs/flatpickr/flatpickr.css" />
-    <!-- Row Group CSS -->
-    <link rel="stylesheet" href="assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css">
+
+    <!-- calshamsi -->
+    <link rel="stylesheet" href="assets/shamsi/kamadatepicker.min.css" />
+
     <!-- Form Validation -->
     <link rel="stylesheet" href="assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
-
-    <!-- Page CSS -->
 
     <!-- Helpers -->
     <script src="assets/vendor/js/helpers.js"></script>
@@ -580,9 +577,9 @@
                 href="javascript:void(0);"
                 data-bs-toggle="dropdown"
               >
-                <div class="avatar avatar-online">
+                <div class="avatar">
                   <img
-                    src="assets/img/avatars/1.png"
+                    src="assets/img/avatars/user.png"
                     alt
                     class="w-px-40 h-auto rounded-circle"
                   />
@@ -596,16 +593,16 @@
                   >
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
-                        <div class="avatar avatar-online">
+                        <div class="avatar">
                           <img
-                            src="assets/img/avatars/1.png"
+                            src="assets/img/avatars/user.png"
                             alt
                             class="w-px-40 h-auto rounded-circle"
                           />
                         </div>
                       </div>
                       <div class="flex-grow-1">
-                        <span class="fw-semibold d-block"> نازنین احمدی </span>
+                        <span class="fw-semibold d-block"><?= $_SESSION['login'] ?></span>
                       </div>
                     </div>
                   </a>
@@ -683,81 +680,114 @@
 
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">داشبورد /</span> خرجی ها
+  <span class="text-muted fw-light">داشبورد /</span> خرجی
 </h4>
 
-<!-- DataTable with Buttons -->
-<div class="card">
-  <div class="card-datatable table-responsive">
-    <table class="datatables-basic table border-top">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th>id</th>
-          <th>عنوان خرجی</th>
-          <th>نوع پرداخت</th>
-          <th>تاریخ پرداخت</th>
-          <th>مبلغ پرداخت</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-</div>
-<!-- Modal to add new record -->
-<div class="offcanvas offcanvas-end" id="add-new-record">
-  <div class="offcanvas-header border-bottom">
-    <h5 class="offcanvas-title" id="exampleModalLabel">افزودن خرجی</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body flex-grow-1">
-    <form class="add-new-record pt-0 row g-2" id="form-add-new-record" onsubmit="return false">
+<!-- table -->
+<div class="container-fluid" dir="rtl">
+<div class="panel panel-default">
+<div class="panel-body">
+<div class="table-responsive">
 
-      <div class="col-sm-12">
-        <label class="form-label" for="basicTitlet">عنوان خرجی</label>
-        <div class="input-group input-group-merge">
-          <input type="text" id="basicTitlet" class="form-control dt-title_t" name="basicTitlet" aria-describedby="basicTitlet2" />
+<a class="btn btn-primary" href="add-daily.php"><i class="bx bx-plus"></i>افزودن خرجی</a>
+<br /> <br />
+
+  <table id="table" class="table table-striped">
+    <thead>
+      <tr class="th_style_daily">
+        <th>ردیف</th>
+        <th>عنوان پرداختی</th>
+        <th>نوع پرداختی</th>
+        <th>تاریخ پرداختی</th>
+        <th>مبلغ پرداختی (تومان)</th>
+        <th></th>
+      </tr>
+    </thead>
+    
+    <?php
+      $query = $conn->query("SELECT * FROM `daily`") or die(mysqli_error());
+      while($fetch = $query->fetch_array()){
+    ?>
+
+      <tr class="td_style">
+        <td> <?php echo $fetch['id']?> </td>
+        <td> <?php echo $fetch['title']?> </td>
+        <td> <?php echo $fetch['type']?> </td>
+        <td> <?php echo $fetch['date']?> </td>
+        <td> <?php echo $fetch['salary']?> </td>
+        
+        <td> <center>
+          <a class="btn btn-label-primary me-2 edit" data-id="<?= $fetch['id'] ?>" data-title="<?= $fetch['title'] ?>" data-type="<?= $fetch['type'] ?>" data-date="<?= $fetch['date'] ?>" data-salary="<?= $fetch['salary'] ?>" data-bs-toggle="modal" data-bs-target="#editdailyModal"><i class="glyphicon glyphicon-edit"> ویرایش </i></a>
+          <a class="btn btn-label-secondary" onclick="confirmationDelete(this); return false;" href="?delete=<?= $fetch['id'] ?>"><i class="glyphicon glyphicon-remove"> حذف </i></a>
+        </center> </td>
+      </tr>
+    
+    <?php
+      }
+    ?>
+    
+  </table>
+</div> </div>
+</div> </div>
+<br /> <br />
+<!--/ table -->
+
+<!-- edit daily -->
+<div class="modal fade" id="editdailyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-simple modal-add-new-cc">
+    <div class="modal-content p-3 p-md-5">
+      <div class="modal-body">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="text-center mb-4">
+          <h3>ویرایش خرجی</h3>
         </div>
+
+        <form action="dashboards-daily.php" method="post" enctype="multipart/form-data" class="row g-3">
+
+          <input type="text" name="id" class="form-control" id="editID" style="display: none;" >
+          
+          <div class="col-12">
+            <label class="form-label w-100 text_idb margin-title" for="title">عنوان پرداختی</label>
+            <div class="input-group input-group-merge">
+              <input type="text" class="form-control" name="title" placeholder="عنوان پرداختی را وارد کنید" id="editTitle" required = "required" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label text_idb" for="type">نوع پرداختی</label>
+            <select class = "form-control" required = "required" name="type" id="editType">
+              <option value="">نوع پرداختی را انتخاب کنید</option>
+              <br />
+              <option value = "نقدی">نقدی</option>
+              <br />
+              <option value = "واریزی">واریزی</option>
+              <br />
+            </select>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label text_idb margin_record" for="date">تاریخ پرداختی</label>
+            <input type="text" class="form-control" name="date" placeholder="روز/ماه/سال" id="editDate" required = "required" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label text_idb margin_record" for="salary">مبلغ پرداختی</label>
+            <input type="number" class="form-control" name="salary" min="1000" max="9000000000" placeholder="1000 تومان" id="editSalary" required = "required" />
+          </div>
+
+          <div class="col-12 text-center margin_record">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1 mt-3" name="edit">
+              <ahref="daily_query.php"> 
+              تایید
+            </button>
+            <button type="reset" class="btn btn-label-secondary mt-3" data-bs-dismiss="modal" aria-label="Close">انصراف</button>
+          </div>
+        </form>
+
       </div>
-
-      <div class="col-sm-12">
-        <label class="form-label" for="basicType_payment">نوع پرداخت</label>
-        <div class="input-group input-group-merge">
-          <select id="basicType_payment" class="form-control dt-type_payment , select2 form-select" name="basicType_payment">
-            <option value="">نوع پرداخت را انتخاب کنید</option>
-            <option value="cash">نقدی</optio>
-            <option value="atm">واریزی</option>
-          </select>
-        </div>
     </div>
-
-      <div class="col-sm-12">
-        <label class="form-label" for="basicDate">تاریخ پرداخت</label>
-        <div class="input-group input-group-merge">
-          <span id="basicDate2" class="input-group-text"><i class='bx bx-calendar'></i></span>
-          <input type="text" class="form-control dt-date" id="basicDate" name="basicDate" aria-describedby="basicDate2" placeholder="سال/ماه/روز" aria-label="سال/ماه/روز" />
-        </div>
-      </div>
-
-      <div class="col-sm-12">
-        <label class="form-label" for="basicSalary">مبلغ پرداخت</label>
-        <div class="input-group input-group-merge">
-          <span id="basicSalary2" class="input-group-text"><i class='bx bx-dollar'></i></span>
-          <input type="number" id="basicSalary" name="basicSalary" class="form-control dt-salary" placeholder="12000" aria-label="12000" aria-describedby="basicSalary2" />
-        </div>
-      </div>
-
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1">تایید</button>
-        <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">انصراف</button>
-      </div>
-    </form>
-
   </div>
 </div>
-<!--/ DataTable with Buttons -->
+<!--/ edit daily -->
 
           </div>
           <!-- / Content -->
@@ -794,49 +824,70 @@
   </div>
   <!-- / Layout wrapper -->
 
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
+<!-- Core JS -->
   <script src="assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="assets/vendor/libs/popper/popper.js"></script>
   <script src="assets/vendor/js/bootstrap.js"></script>
   <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-  <script src="assets/vendor/libs/hammer/hammer.js"></script>
-  <script src="assets/vendor/libs/i18n/i18n.js"></script>
-  <script src="assets/vendor/libs/typeahead-js/typeahead.js"></script>
-
   <script src="assets/vendor/js/menu.js"></script>
-  <!-- endbuild -->
 
-  <!-- Vendors JS -->
-  <script src="assets/vendor/libs/datatables/jquery.dataTables.js"></script>
-<script src="assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-<script src="assets/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
-<script src="assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
-
-<script src="assets/vendor/libs/datatables-buttons/datatables-buttons.js"></script>
-<script src="assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js"></script>
-<script src="assets/vendor/libs/jszip/jszip.js"></script>
-<script src="assets/vendor/libs/pdfmake/pdfmake.js"></script>
-<script src="assets/vendor/libs/datatables-buttons/buttons.html5.js"></script>
-<script src="assets/vendor/libs/datatables-buttons/buttons.print.js"></script>
-<!-- Flat Picker -->
-<script src="assets/vendor/libs/moment/moment.js"></script>
-<script src="assets/vendor/libs/flatpickr/flatpickr.js"></script>
-<!-- Row Group JS -->
-<script src="assets/vendor/libs/datatables-rowgroup/datatables.rowgroup.js"></script>
-<script src="assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.js"></script>
-<!-- Form Validation -->
-<script src="assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
-<script src="assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
-<script src="assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
-
-  <!-- Main JS -->
+<!-- Main JS -->
   <script src="assets/js/main.js"></script>
 
-  <!-- Page JS -->
-  <script src="assets/js/dashboards-daily.js"></script>
-  <!-- <script src="assets/js/test.js"></script> -->
+<!-- Page JS -->
+  <script src = "assets/js/jquery.dataTables.js"> </script>
+  <script src = "assets/js/dataTables.bootstrap.js"> </script>
+  <script src="assets/shamsi/kamadatepicker.min.js"></script>
+
+<!-- shamsi script -->
+  <script>
+    let options = {
+      previousButtonIcon: "assets/shamsi/timeir_prev.png",
+      nextButtonIcon: "assets/shamsi/timeir_next.png",
+      forceFarsiDigits: true,
+      markToday: true,
+      markHolidays: true,
+      highlightSelectedDay: true,
+      sync: true,
+      gotoToday: true
+    }
+    kamaDatepicker('editDate',options);
+  </script>
+
+<!-- edit script -->
+  <script>
+    let editBtns = document.querySelectorAll('.edit');
+    let editID = document.querySelector('#editID');
+    let editTitle = document.querySelector('#editTitle');
+    let editType = document.querySelector('#editType');
+    let editDate = document.querySelector('#editDate');
+    let editSalary = document.querySelector('#editSalary');
+
+    editBtns.forEach(editBtn => {
+      editBtn.addEventListener('click', () => {
+        editID.value = editBtn.dataset.id
+        editTitle.value = editBtn.dataset.title
+        editDate.value = editBtn.dataset.date
+        editSalary.value = editBtn.dataset.salary
+        let typeID;
+        if (editBtn.dataset.type == "نقدی") {
+          typeID = 1;
+        } else {
+          typeID = 2
+        }
+        editType.selectedIndex = typeID
+      })
+    })
+  </script>
+
+<!-- delete script -->
+  <script type = "text/javascript">
+    function confirmationDelete(anchor){
+      var conf = confirm(" آیا مطمئن به حذف این خرجی هستید؟ ");
+      if(conf){
+        window.location = anchor.attr("href");
+      }
+    } 
+  </script>
 
 </body>
 

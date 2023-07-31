@@ -10,7 +10,7 @@ include_once "connect.php";
 // }
 
 
-// add income
+// add bills
 $message = null;
 
 function dataIsValid()
@@ -20,6 +20,9 @@ function dataIsValid()
     return false;
   }
   if (!isset($_POST['type'])) {
+    return false;
+  }
+  if (!isset($_POST['banks'])) {
     return false;
   }
   if (!isset($_POST['date'])) {
@@ -36,18 +39,19 @@ if (isset($_POST['save'])) {
   if (dataIsValid()) {
     $title = $_POST['title'];
     $type = $_POST['type'];
+    $banks = $_POST['banks'];
     $date = $_POST['date'];
     $salary = $_POST['salary'];
-    $add = mysqli_query($conn, "INSERT INTO income (`title` ,`type` ,`date` ,`salary`) VALUES ('$title', '$type', '$date', '$salary')");
+    $add = mysqli_query($conn, "INSERT INTO bills (`title`, `type`, `banks`, `date`, `salary`) VALUES ('$title', '$type', '$banks', '$date', '$salary')");
     if ($add) {
-      $message = "درآمد با موفقیت ثبت شد";
+      $message = "قبض با موفقیت ثبت شد";
     } else {
-      $message = "خطا در افزودن درآمد !";
+      $message = "خطا در افزودن قبض !";
     }
   }
 }
 
-// edit income
+// edit bills
 function editDataIsValid()
 {
   global $message;
@@ -55,6 +59,9 @@ function editDataIsValid()
     return false;
   }
   if (!isset($_POST['type'])) {
+    return false;
+  }
+  if (!isset($_POST['banks'])) {
     return false;
   }
   if (!isset($_POST['date'])) {
@@ -72,35 +79,36 @@ if (isset($_POST['edit'])) {
   if (editDataIsValid()) {
     $title = $_POST['title'];
     $type = $_POST['type'];
+    $banks = $_POST['banks'];
     $date = $_POST['date'];
     $salary = $_POST['salary'];
     $id = $_POST['id'];
-    $edit = mysqli_query($conn,"UPDATE income SET title='$title', type='$type' , date = '$date', salary = '$salary'  WHERE id='$id'  ");
+    $edit = mysqli_query($conn,"UPDATE bills SET title='$title', type='$type', banks='$banks', date = '$date', salary = '$salary'  WHERE id='$id'");
     if ($edit) {
-      $message = "درآمد موردنظر با موفقیت ویرایش شد";
+      $message = "قبض موردنظر با موفقیت ویرایش شد";
     } else {
-      $message = "خطا در ویرایش درآمد !";
+      $message = "خطا در ویرایش قبض !";
     }
   }       
 }
 
-//delete income
+//delete bills
 if (isset($_GET['delete'])) {
   $id = $_GET['delete'];
 
 
-  //delete income message 
-  $sql = "DELETE FROM income WHERE id='$id'";
+  //delete bills message 
+  $sql = "DELETE FROM bills WHERE id='$id'";
 
   if ($conn->query($sql) === TRUE) {
-    $message = "درآمد موردنظر با موفقیت حذف شد";
+    $message = "قبض موردنظر با موفقیت حذف شد";
   } else {
-    $message = "خطا در حذف درآمد !";
+    $message = "خطا در حذف قبض !";
   }
 }
 
-// get all income
-$query = mysqli_query($conn, "select * from  income");
+// get all bills
+$query = mysqli_query($conn, "select * from  bills");
 
 if ($message) {
   echo '<script>alert("' . $message . '")</script>';

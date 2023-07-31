@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
- include 'income_query.php';
+ include 'daily_query.php';
 ?>
 
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>سودآور | افزودن درآمد</title>
+    <title>سودآور | افزودن خرجی </title>
 
     <meta name="description" content="Most Powerful &amp; Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
@@ -179,13 +179,13 @@
               </a>
             </li>
 
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="dashboards-income.php" class="menu-link">
                 <div> درآمد </div>
               </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="dashboards-daily.php" class="menu-link">
                 <div> خرجی ها </div>
               </a>
@@ -677,24 +677,24 @@
 
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">داشبورد / درآمد /</span> افزودن درآمد
+  <span class="text-muted fw-light">داشبورد / خرجی ها /</span> افزودن خرجی
 </h4>
 
 <!-- form -->
-<div class = "form_income">
-    <form method = "POST" action="dashboards-income.php">
+<div class = "form_daily">
+    <form method = "POST" action="dashboards-daily.php">
       <div class = "form-group">
         <div class="text_idb margin-title">
-          <label>عنوان دریافتی</label>
-          <input type = "text" class = "form-control" name = "title" placeholder="عنوان دریافتی را وارد کنید" required = "required" />
+          <label>عنوان پرداختی</label>
+          <input type = "text" class = "form-control" name = "title" placeholder="عنوان پرداختی را وارد کنید" required = "required" />
         </div>
       </div>
 
       <div class = "form-group">
         <div class="text_idb margin_record">
-          <label>نوع دریافتی</label>
+          <label>نوع پرداختی</label>
           <select class = "form-control" required = "required" name = "type">
-            <option value = ""> نوع دریافتی را انتخاب کنید </option>
+            <option value = ""> نوع پرداختی را انتخاب کنید </option>
             <br />
             <option value = "نقدی">نقدی</option>
             <br />
@@ -706,14 +706,14 @@
 
       <div class = "form-group">
         <div class="text_idb margin_record">
-          <label>تاریخ دریافتی</label>
+          <label>تاریخ پرداختی</label>
           <input type = "text" class = "form-control" id="cal" name = "date" placeholder="روز/ماه/سال" required = "required">
         </div>
       </div>
 
       <div class = "form-group">
         <div class="text_idb margin_record">
-          <label>مبلغ دریافتی</label>
+          <label>مبلغ پرداختی</label>
           <input type = "number" min="1000" max="9000000000" class = "form-control" name = "salary" placeholder="1000 تومان" required = "required" />
         </div>
       </div>
@@ -722,7 +722,7 @@
       <div class = "form-group">
         <div class="text_idb">
           <button name = "save" class = "btn btn-success form-control size-btn">
-            <ahref="income_query.php">
+            <ahref="daily_query.php">
             <i class = "bx bx-save"> </i>  ثبت</button>
         </div>
       </div>
@@ -730,7 +730,7 @@
 
     </form>
 
-        <a class="btn btn-danger size-btn" href="dashboards-income.php"> <i class="bx bx-error"> </i>  انصراف</a>
+        <a class="btn btn-danger size-btn" href="dashboards-daily.php"> <i class="bx bx-error"> </i>  انصراف</a>
 
 </div>
 <!--/ form -->
@@ -776,28 +776,31 @@
   <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
   <script src="assets/vendor/js/menu.js"></script>
 
+
+
 <!-- Main JS -->
-  <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
+
 
 <!-- Page JS -->
-  <script src = "assets/js/jquery.dataTables.js"> </script>
-  <script src = "assets/js/dataTables.bootstrap.js"> </script>
-  <script src="assets/shamsi/kamadatepicker.min.js"></script>
+    <script src = "assets/js/jquery.dataTables.js"> </script>
+    <script src = "assets/js/dataTables.bootstrap.js"> </script>
+    <script src="assets/shamsi/kamadatepicker.min.js"></script>
 
 <!-- shamsi script -->
-  <script>
-    let options = {
-      previousButtonIcon: "assets/shamsi/timeir_prev.png",
-      nextButtonIcon: "assets/shamsi/timeir_next.png",
-      forceFarsiDigits: true,
-      markToday: true,
-      markHolidays: true,
-      highlightSelectedDay: true,
-      sync: true,
-      gotoToday: true
-    }
-    kamaDatepicker('cal',options);
-  </script>
+    <script>
+        let options = {
+            previousButtonIcon: "assets/shamsi/timeir_prev.png",
+            nextButtonIcon: "assets/shamsi/timeir_next.png",
+            forceFarsiDigits: true,
+            markToday: true,
+            markHolidays: true,
+            highlightSelectedDay: true,
+            sync: true,
+            gotoToday: true
+        }
+        kamaDatepicker('cal',options);
+    </script>
 
 </body>
 

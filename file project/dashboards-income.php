@@ -32,36 +32,18 @@
     <link rel="stylesheet" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/in&da&bi.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="assets/vendor/libs/typeahead-js/typeahead.css" />
     <link rel="stylesheet" href="assets/vendor/libs/flatpickr/flatpickr.css" />
 
+    <!-- calshamsi -->
+    <link rel="stylesheet" href="assets/shamsi/kamadatepicker.min.css" />
+
     <!-- Form Validation -->
     <link rel="stylesheet" href="assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
-
-    <!-- jalali -->
-    <link rel="stylesheet" type="text/css" media="all" href="jalali/skins/aqua/theme.css" title="Aqua" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-blue.css" title="winter" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-blue2.css" title="blue" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-brown.css" title="summer" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-green.css" title="green" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-1.css" title="win2k-1" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-2.css" title="win2k-2" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-cold-1.css" title="win2k-cold-1" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-win2k-cold-2.css" title="win2k-cold-2" />
-    <link rel="alternate stylesheet" type="text/css" media="all" href="jalali/skins/calendar-system.css" title="system" />
-    <!-- import the Jalali Date Class script -->
-    <script type="text/javascript" src="jalali/jalali.js"></script>
-    <!-- import the calendar script -->
-    <script type="text/javascript" src="jalali/calendar.js"></script>
-    <!-- import the calendar script -->
-    <script type="text/javascript" src="jalali/calendar-setup.js"></script>		
-    <!-- import the language module -->
-    <script type="text/javascript" src="jalali/lang/calendar-fa.js"></script>
-
-    <!-- Page CSS -->
 
     <!-- Helpers -->
     <script src="assets/vendor/js/helpers.js"></script>
@@ -712,7 +694,8 @@
 
   <table id="table" class="table table-striped">
     <thead>
-      <tr class="active">
+      <tr class="th_style">
+        <th>ردیف</th>
         <th>عنوان دریافتی</th>
         <th>نوع دریافتی</th>
         <th>تاریخ دریافتی</th>
@@ -720,30 +703,91 @@
         <th></th>
       </tr>
     </thead>
+    
     <?php
       $query = $conn->query("SELECT * FROM `income`") or die(mysqli_error());
       while($fetch = $query->fetch_array()){
     ?>
 
-      <tr>
+      <tr class="td_style">
+        <td> <?php echo $fetch['id']?> </td>
         <td> <?php echo $fetch['title']?> </td>
         <td> <?php echo $fetch['type']?> </td>
         <td> <?php echo $fetch['date']?> </td>
         <td> <?php echo $fetch['salary']?> </td>
+        
         <td> <center>
-          <a class="btn btn-warning" href="edit_income.php?id=<?php echo $fetch['id']?>"><i class="bx bx-edit"> ویرایش </i></a>
-          <br /> <br />
-          <a class="btn btn-danger" onclick="confirmationDelete(this); return false;" href="delete_income.php?id=<?php echo $fetch['id']?>"><i class="bx bx-error"> حذف </i></a>
+          <a class="btn btn-label-primary me-2 edit" data-id="<?= $fetch['id'] ?>" data-title="<?= $fetch['title'] ?>" data-type="<?= $fetch['type'] ?>" data-date="<?= $fetch['date'] ?>" data-salary="<?= $fetch['salary'] ?>" data-bs-toggle="modal" data-bs-target="#editincomeModal"><i class="glyphicon glyphicon-edit"> ویرایش </i></a>
+          <a class="btn btn-label-secondary" onclick="confirmationDelete(this); return false;" href="?delete=<?= $fetch['id'] ?>"><i class="glyphicon glyphicon-remove"> حذف </i></a>
         </center> </td>
       </tr>
+    
     <?php
-    }
+      }
     ?>
+    
   </table>
 </div> </div>
 </div> </div>
 <br /> <br />
 <!--/ table -->
+
+<!-- edit income -->
+<div class="modal fade" id="editincomeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-simple modal-add-new-cc">
+    <div class="modal-content p-3 p-md-5">
+      <div class="modal-body">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="text-center mb-4">
+          <h3>ویرایش درآمد</h3>
+        </div>
+
+        <form action="dashboards-income.php" method="post" enctype="multipart/form-data" class="row g-3">
+
+          <input type="text" name="id" class="form-control" id="editID" style="display: none;" >
+          
+          <div class="col-12">
+            <label class="form-label w-100 text_idb margin-title" for="title">عنوان دریافتی</label>
+            <div class="input-group input-group-merge">
+              <input type="text" class="form-control" name="title" placeholder="عنوان دریافتی را وارد کنید" id="editTitle" required = "required" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label text_idb" for="type">نوع دریافتی</label>
+            <select class = "form-control" required = "required" name="type" id="editType">
+              <option value="">نوع دریافتی را انتخاب کنید</option>
+              <br />
+              <option value = "نقدی">نقدی</option>
+              <br />
+              <option value = "واریزی">واریزی</option>
+              <br />
+            </select>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label text_idb margin_record" for="date">تاریخ دریافتی</label>
+            <input type="text" class="form-control" name="date" placeholder="روز/ماه/سال" id="editDate" required = "required" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label text_idb margin_record" for="salary">مبلغ دریافتی</label>
+            <input type="number" class="form-control" name="salary" min="1000" max="9000000000" placeholder="1000 تومان" id="editSalary" required = "required" />
+          </div>
+
+          <div class="col-12 text-center margin_record">
+            <button type="submit" class="btn btn-primary me-sm-3 me-1 mt-3" name="edit">
+              <ahref="income_query.php"> 
+              تایید
+            </button>
+            <button type="reset" class="btn btn-label-secondary mt-3" data-bs-dismiss="modal" aria-label="Close">انصراف</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ edit income -->
 
           </div>
           <!-- / Content -->
@@ -780,18 +824,70 @@
   </div>
   <!-- / Layout wrapper -->
 
-  <!-- Core JS -->
+<!-- Core JS -->
   <script src="assets/vendor/libs/jquery/jquery.js"></script>
   <script src="assets/vendor/js/bootstrap.js"></script>
   <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
   <script src="assets/vendor/js/menu.js"></script>
 
 <!-- Main JS -->
-<script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 <!-- Page JS -->
-<script src = "assets/js/jquery.dataTables.js"> </script>
-<script src = "assets/js/dataTables.bootstrap.js"> </script>
+  <script src = "assets/js/jquery.dataTables.js"> </script>
+  <script src = "assets/js/dataTables.bootstrap.js"> </script>
+  <script src="assets/shamsi/kamadatepicker.min.js"></script>
+
+<!-- shamsi script -->
+  <script>
+    let options = {
+      previousButtonIcon: "assets/shamsi/timeir_prev.png",
+      nextButtonIcon: "assets/shamsi/timeir_next.png",
+      forceFarsiDigits: true,
+      markToday: true,
+      markHolidays: true,
+      highlightSelectedDay: true,
+      sync: true,
+      gotoToday: true
+    }
+    kamaDatepicker('editDate',options);
+  </script>
+
+<!-- edit script -->
+  <script>
+    let editBtns = document.querySelectorAll('.edit');
+    let editID = document.querySelector('#editID');
+    let editTitle = document.querySelector('#editTitle');
+    let editType = document.querySelector('#editType');
+    let editDate = document.querySelector('#editDate');
+    let editSalary = document.querySelector('#editSalary');
+
+    editBtns.forEach(editBtn => {
+      editBtn.addEventListener('click', () => {
+        editID.value = editBtn.dataset.id
+        editTitle.value = editBtn.dataset.title
+        editDate.value = editBtn.dataset.date
+        editSalary.value = editBtn.dataset.salary
+        let typeID;
+        if (editBtn.dataset.type == "نقدی") {
+          typeID = 1;
+        } else {
+          typeID = 2
+        }
+        editType.selectedIndex = typeID
+      })
+    })
+  </script>
+
+<!-- delete script -->
+  <script type = "text/javascript">
+    function confirmationDelete(anchor){
+      var conf = confirm(" آیا مطمئن به حذف این درآمد هستید؟ ");
+      if(conf){
+        window.location = anchor.attr("href");
+      }
+    } 
+  </script>
 
 </body>
 
