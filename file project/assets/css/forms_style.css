@@ -1,0 +1,133 @@
+.th_style{
+    background-color: rgb(72, 255, 0);
+    text-align: center;
+    font-weight: bolder;
+    font-style: oblique;
+}
+
+.td_style{
+    text-align: center;
+}
+
+.th_style_daily{
+  background-color: rgb(255, 85, 85);
+  text-align: center;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+.th_style_bills{
+  background-color: rgb(255, 119, 46);
+  text-align: center;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+.th_style_profile{
+  background-color: rgb(221, 0, 255);
+  text-align: center;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+.th_style_banks{
+  background-color: rgb(0, 166, 255);
+  text-align: center;
+  font-weight: bolder;
+  font-style: oblique;
+}
+
+.form_income{
+    width:800px;
+    height:450px;
+    background-color:white;
+    border-right:25px solid #00ff11;
+    padding: 40px 30px;
+    margin-right: 200px;
+    box-shadow: 2px 4px 4px #3b3b3b;
+ }
+
+ .form_daily{
+  width:800px;
+  height:450px;
+  background-color:white;
+  border-right:25px solid red;
+  padding: 40px 30px;
+  margin-right: 200px;
+  box-shadow: 2px 4px 4px #3b3b3b;
+}
+
+.form_bills{
+  width:800px;
+  height:520px;
+  background-color:white;
+  border-right:25px solid orange;
+  padding: 40px 30px;
+  margin-right: 200px;
+  box-shadow: 2px 4px 4px #3b3b3b;
+}
+
+.form_banks{
+  width:800px;
+  height:600px;
+  background-color:white;
+  border-right:25px solid rgb(0, 166, 255);
+  padding: 40px 30px;
+  margin-right: 200px;
+  box-shadow: 2px 4px 4px #3b3b3b;
+}
+
+.form_profile{
+  width:800px;
+  height:700px;
+  background-color:white;
+  border-right:25px solid rgb(221, 0, 255);
+  padding: 40px 30px;
+  margin-right: 200px;
+  box-shadow: 2px 4px 4px #3b3b3b;
+}
+
+ .text_idb{
+    font-size: 15px;
+    font-weight: bolder;
+ }
+
+ .margin_record{
+   margin-top: 7px;
+ }
+
+ .margin-title{
+  margin-top: auto;
+ }
+
+ .size-btn{
+  font-size: 15px;
+  width: 300px;
+  height: 35;
+  margin-right: 200px;
+ }
+
+ @font-face {
+   font-family: 'Glyphicons Halflings';
+ 
+   src: url('../svg/icons/glyphicons-halflings-regular.eot');
+   src: url('../svg/icons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../svg/icons/glyphicons-halflings-regular.woff2') format('woff2'), url('../svg/icons/glyphicons-halflings-regular.woff') format('woff'), url('../svg/icons/glyphicons-halflings-regular.ttf') format('truetype'), url('../svg/icons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+ }
+ .glyphicon {
+   position: relative;
+   top: 1px;
+   display: inline-block;
+   font-family: 'Glyphicons Halflings';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+ 
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
+ .glyphicon-edit:before {
+   content: "\e065";
+ }
+ .glyphicon-remove:before {
+   content: "\e014";
+ }
