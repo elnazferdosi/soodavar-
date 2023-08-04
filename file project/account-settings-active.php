@@ -1,3 +1,8 @@
+<?php
+  require_once 'validation_user.php';
+  require 'name_user.php';
+?>
+
 <!DOCTYPE html>
 
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
@@ -131,7 +136,7 @@
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="dashboards-index.php" class="menu-link">
+          <a href="index.php" class="menu-link">
             <div> صفحه اصلی </div>
           </a>
         </li>
@@ -188,7 +193,7 @@
     <ul class="menu-sub">
       <li class="menu-item">
         <a
-          href="account-settings-account.php"
+          href="profile-account.php"
           class="menu-link"
         >
           <div> حساب کاربری </div>
@@ -206,7 +211,7 @@
 
       <li class="menu-item">
         <a
-          href="account-settings-banks.php"
+          href="banks.php"
           class="menu-link"
         >
           <div> حساب های بانکی </div>
@@ -531,9 +536,9 @@
                     href="javascript:void(0);"
                     data-bs-toggle="dropdown"
                   >
-                    <div class="avatar avatar-online">
+                    <div class="avatar">
                       <img
-                        src="assets/img/avatars/1.png"
+                        src="assets/img/avatars/user.png"
                         alt
                         class="w-px-40 h-auto rounded-circle"
                       />
@@ -543,20 +548,20 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="account-settings-account.php"
+                        href="profile-account.php"
                       >
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
+                            <div class="avatar ">
                               <img
-                                src="assets/img/avatars/1.png"
+                                src="assets/img/avatars/user.png"
                                 alt
                                 class="w-px-40 h-auto rounded-circle"
                               />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block"> نازنین احمدی </span>
+                            <span class="fw-semibold d-block"><?php echo $username;?></span>
                           </div>
                         </div>
                       </a>
@@ -565,7 +570,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="account-settings-account.php">
+                      <a class="dropdown-item" href="profile-account.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle"> پروفایل من </span>
                       </a>
@@ -573,7 +578,7 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="account-settings-banks.php"
+                        href="banks.php"
                       >
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -600,7 +605,6 @@
                       <a
                         class="dropdown-item"
                         href="login.php"
-                        target="_blank"
                       >
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle"> خروج از حساب کاربری </span>
@@ -641,9 +645,9 @@
             <div class="row">
               <div class="col-md-12">
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                  <li class="nav-item"><a class="nav-link" href="account-settings-account.php"><i class="bx bx-user me-1"></i> حساب کاربری </a></li>
+                  <li class="nav-item"><a class="nav-link" href="profile-account.php"><i class="bx bx-user me-1"></i> حساب کاربری </a></li>
                   <li class="nav-item"><a class="nav-link" href="account-settings-security.php"><i class="bx bx-lock-alt me-1"></i> امنیت </a></li>
-                  <li class="nav-item"><a class="nav-link" href="account-settings-banks.php"><i class="bx bx-detail me-1"></i> حساب های بانکی </a></li>
+                  <li class="nav-item"><a class="nav-link" href="banks.php"><i class="bx bx-detail me-1"></i> حساب های بانکی </a></li>
                   <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i class="bx bx-link-alt me-1"></i> حساب های فعال با ایمیل </a></li>
                 </ul>
 
@@ -737,7 +741,7 @@
               <div class="flex-grow-1 row">
                 <div class="col-8 col-sm-7 mb-sm-0 mb-2">
                   <h6 class="mb-0">Twitter</h6>
-                  <a href="https://twitter.com/nazaninahmadi" target="_blank">@nazaninahmadi</a>
+                  <a href="https://twitter.com/nazaninahmadi">@nazaninahmadi</a>
                 </div>
                 <div class="col-4 col-sm-5 text-end">
                   <button type="button" class="btn btn-icon btn-label-danger">
@@ -753,7 +757,7 @@
               <div class="flex-grow-1 row">
                 <div class="col-8 col-sm-7 mb-sm-0 mb-2">
                   <h6 class="mb-0">instagram</h6>
-                  <a href="https://www.instagram.com/n_ahmadi79/" target="_blank">@n_ahmadi79</a>
+                  <a href="https://www.instagram.com/n_ahmadi79/">@n_ahmadi79</a>
                 </div>
                 <div class="col-4 col-sm-5 text-end">
                   <button type="button" class="btn btn-icon btn-label-danger">

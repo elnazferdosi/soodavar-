@@ -54,8 +54,8 @@ if (isset($_POST['email'])) {
   // user data
   $username = $_POST['username'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confpassword = $_POST['confpassword'];
+  $password = md5($_POST['password']);
+  $confpassword = md5($_POST['confpassword']);
 
   if (dataIsValid()) {
     $sql = "INSERT INTO users (username,email,password) VALUES

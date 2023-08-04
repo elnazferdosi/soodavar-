@@ -191,7 +191,7 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a
-              href="account-settings-account.php"
+              href="banks.php"
               class="menu-link"
             >
               <div> حساب کاربری </div>
@@ -209,7 +209,7 @@
 
           <li class="menu-item">
             <a
-              href="account-settings-banks.php"
+              href="banks.php"
               class="menu-link"
             >
               <div> حساب های بانکی </div>
@@ -537,7 +537,7 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="account-settings-account.php"
+                        href="banks.php"
                       >
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
@@ -559,7 +559,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="account-settings-account.php">
+                      <a class="dropdown-item" href="banks.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle"> پروفایل من </span>
                       </a>
@@ -567,7 +567,7 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="account-settings-banks.php"
+                        href="banks.php"
                       >
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 bx bx-credit-card me-2"></i>

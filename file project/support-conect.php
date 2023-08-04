@@ -1,3 +1,8 @@
+<?php
+  require_once 'validation_user.php';
+  require 'name_user.php';
+?>
+
 <!DOCTYPE html>
 
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
@@ -136,7 +141,7 @@
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="dashboards-index.php" class="menu-link">
+          <a href="index.php" class="menu-link">
             <div> صفحه اصلی </div>
           </a>
         </li>
@@ -193,7 +198,7 @@
     <ul class="menu-sub">
       <li class="menu-item">
         <a
-          href="account-settings-account.php"
+          href="profile-account.php"
           class="menu-link"
         >
           <div> حساب کاربری </div>
@@ -211,7 +216,7 @@
 
       <li class="menu-item">
         <a
-          href="account-settings-banks.php"
+          href="banks.php"
           class="menu-link"
         >
           <div> حساب های بانکی </div>
@@ -527,9 +532,9 @@
                     href="javascript:void(0);"
                     data-bs-toggle="dropdown"
                   >
-                    <div class="avatar avatar-online">
+                    <div class="avatar ">
                       <img
-                        src="assets/img/avatars/1.png"
+                        src="assets/img/avatars/user.png"
                         alt
                         class="w-px-40 h-auto rounded-circle"
                       />
@@ -539,20 +544,20 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="account-settings-account.php"
+                        href="profile-account.php"
                       >
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
+                            <div class="avatar ">
                               <img
-                                src="assets/img/avatars/1.png"
+                                src="assets/img/avatars/user.png"
                                 alt
                                 class="w-px-40 h-auto rounded-circle"
                               />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block"> نازنین احمدی </span>
+                            <span class="fw-semibold d-block"><?php echo $username; ?></span>
                           </div>
                         </div>
                       </a>
@@ -561,7 +566,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="account-settings-account.php">
+                      <a class="dropdown-item" href="profile-account.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle"> پروفایل من </span>
                       </a>
@@ -569,7 +574,7 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="account-settings-banks.php"
+                        href="banks.php"
                       >
                         <span class="d-flex align-items-center align-middle">
                           <i class="flex-shrink-0 bx bx-credit-card me-2"></i>

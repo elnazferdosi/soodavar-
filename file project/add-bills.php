@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-
 <?php
- include 'bills_query.php';
+  include 'bills_query.php';
+  require_once 'validation_user.php';
+  require 'name_user.php';
 ?>
+
+<!DOCTYPE html>
 
 <html lang="fa" class="light-style layout-navbar-fixed layout-menu-fixed " dir="rtl" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
 
@@ -32,7 +34,7 @@
     <link rel="stylesheet" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/in&da&bi.css" />
+    <link rel="stylesheet" href="assets/css/forms_style.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -174,7 +176,7 @@
 
           <ul class="menu-sub">
             <li class="menu-item">
-              <a href="dashboards-index.php" class="menu-link">
+              <a href="index.php" class="menu-link">
                 <div> صفحه اصلی </div>
               </a>
             </li>
@@ -231,7 +233,7 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a
-              href="account-settings-account.php"
+              href="profile-account.php"
               class="menu-link"
             >
               <div> حساب کاربری </div>
@@ -249,7 +251,7 @@
 
           <li class="menu-item">
             <a
-              href="account-settings-banks.php"
+              href="banks.php"
               class="menu-link"
             >
               <div> حساب های بانکی </div>
@@ -586,7 +588,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    href="account-settings-account.php"
+                    href="profile-account.php"
                   >
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
@@ -599,7 +601,7 @@
                         </div>
                       </div>
                       <div class="flex-grow-1">
-                        <span class="fw-semibold d-block"><?= $_SESSION['login'] ?></span>
+                        <span class="fw-semibold d-block"><?php echo $username;?></span>
                       </div>
                     </div>
                   </a>
@@ -608,7 +610,7 @@
                   <div class="dropdown-divider"></div>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="account-settings-account.php">
+                  <a class="dropdown-item" href="profile-account.php">
                     <i class="bx bx-user me-2"></i>
                     <span class="align-middle"> پروفایل من </span>
                   </a>
@@ -616,7 +618,7 @@
                 <li>
                   <a
                     class="dropdown-item"
-                    href="account-settings-banks.php"
+                    href="banks.php"
                   >
                     <span class="d-flex align-items-center align-middle">
                       <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -643,7 +645,7 @@
                   <a
                     class="dropdown-item"
                     href="login.php"
-                    target="_blank"
+                    
                   >
                     <i class="bx bx-power-off me-2"></i>
                     <span class="align-middle"> خروج از حساب کاربری </span>
@@ -710,26 +712,22 @@
         </div>
       </div>
 
+      <?php
+        $query = $conn->query("SELECT numbers FROM `banks`") or die(mysqli_error());
+        while($fetch = $query->fetch_array()){
+      ?>
       <div class = "form-group">
         <div class="text_idb margin_record">
           <label>حساب بانکی</label>
           <select class = "form-control" required = "required" name = "banks">
             <option value = ""> حساب بانکی ای که با آن قبض را پرداخت کرده اید،انتخاب کنید </option>
             <br />
-            <option value = "ملت">ملت</option>
-            <br />
-            <option value = "ملی">ملی</option>
-            <br />
-            <option value = "سپه">سپه</option>
-            <br />
-            <option value = "رسالت">رسالت</option>
-            <br />
-            <option value = "شهر">شهر</option>
+            <option value = "<?php echo $fetch['numbers'] ?>"> <?php echo $fetch['numbers'] ?> </option>
             <br />
           </select>
         </div>
       </div>
-
+      <?php } ?>
       <div class = "form-group">
         <div class="text_idb margin_record">
           <label>تاریخ پرداخت قبض</label>
