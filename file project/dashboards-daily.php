@@ -1,5 +1,4 @@
 <?php
-  include 'daily_query.php';
   require_once 'validation_user.php';
   require 'name_user.php';
 ?>
@@ -35,6 +34,7 @@
     <link rel="stylesheet" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/forms_style.css" />
+    <link rel="stylesheet" href="assets/css/dailys.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -648,7 +648,7 @@
                   <a
                     class="dropdown-item"
                     href="login.php"
-                    
+
                   >
                     <i class="bx bx-power-off me-2"></i>
                     <span class="align-middle"> خروج از حساب کاربری </span>
@@ -682,114 +682,48 @@
 
 
 <h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light">داشبورد /</span> خرجی
+  <span class="text-muted fw-light">داشبورد /</span> خرجی ها
 </h4>
 
-<!-- table -->
-<div class="container-fluid" dir="rtl">
-<div class="panel panel-default">
-<div class="panel-body">
-<div class="table-responsive">
 
-<a class="btn btn-primary" href="add-daily.php"><i class="bx bx-plus"></i>افزودن خرجی</a>
-<br /> <br />
+<div class="row">
+  <div class="column">
+    <a href="pooshak.php">
+    <img src="assets/img/pages/poshak.jpg" alt="پوشاک" style="width:250px; height:400px;">
+    <p> </p>
+    <h2> پوشاک </h2>
+    </a>
+  </div>
 
-  <table id="table" class="table table-striped">
-    <thead>
-      <tr class="th_style_daily">
-        <th>ردیف</th>
-        <th>عنوان پرداختی</th>
-        <th>نوع پرداختی</th>
-        <th>تاریخ پرداختی</th>
-        <th>مبلغ پرداختی (تومان)</th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <?php
-      $query = $conn->query("SELECT * FROM `daily`") or die(mysqli_error());
-      while($fetch = $query->fetch_array()){
-    ?>
+  <div class="column">
+    <a href="food.php">
+    <img src="assets/img/pages/food.jpg" alt="موادغذایی" style="width:250px; height:400px;">
+    <p> </p>
+    <h2> مواد غذایی </h2>
+    </a>
+  </div>
 
-      <tr class="td_style">
-        <td> <?php echo $fetch['id']?> </td>
-        <td> <?php echo $fetch['title']?> </td>
-        <td> <?php echo $fetch['type']?> </td>
-        <td> <?php echo $fetch['date']?> </td>
-        <td> <?php echo $fetch['salary']?> </td>
-        
-        <td> <center>
-          <a class="btn btn-label-primary me-2 edit" data-id="<?= $fetch['id'] ?>" data-title="<?= $fetch['title'] ?>" data-type="<?= $fetch['type'] ?>" data-date="<?= $fetch['date'] ?>" data-salary="<?= $fetch['salary'] ?>" data-bs-toggle="modal" data-bs-target="#editdailyModal"><i class="glyphicon glyphicon-edit"> ویرایش </i></a>
-          <a class="btn btn-label-secondary" onclick="confirmationDelete(this); return false;" href="?delete=<?= $fetch['id'] ?>"><i class="glyphicon glyphicon-remove"> حذف </i></a>
-        </center> </td>
-      </tr>
-    
-    <?php
-      }
-    ?>
-    
-  </table>
-</div> </div>
-</div> </div>
-<br /> <br />
-<!--/ table -->
+  <div class="column">
+    <a href="hamlonaghl.php">
+    <img src="assets/img/pages/hamlonaghl.jpg" alt="حمل و نقل" style="width:250px; height:400px;">
+    <p> </p>
+    <h2> حمل و نقل </h2>
+    </a>
+  </div>
 
-<!-- edit daily -->
-<div class="modal fade" id="editdailyModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-simple modal-add-new-cc">
-    <div class="modal-content p-3 p-md-5">
-      <div class="modal-body">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        <div class="text-center mb-4">
-          <h3>ویرایش خرجی</h3>
+  <div class="column">
+    <a href="other.php">
+    <img src="assets/img/pages/other.jpg" alt="سایر" style="width:250px; height:400px;">
+    <p> </p>
+    <h2>سایر</h2>
+    </a>
+  </div>
+
+</div>
+
         </div>
 
-        <form action="dashboards-daily.php" method="post" enctype="multipart/form-data" class="row g-3">
 
-          <input type="text" name="id" class="form-control" id="editID" style="display: none;" >
-          
-          <div class="col-12">
-            <label class="form-label w-100 text_idb margin-title" for="title">عنوان پرداختی</label>
-            <div class="input-group input-group-merge">
-              <input type="text" class="form-control" name="title" placeholder="عنوان پرداختی را وارد کنید" id="editTitle" required = "required" />
-          </div>
-
-          <div class="col-12 col-md-6">
-            <label class="form-label text_idb" for="type">نوع پرداختی</label>
-            <select class = "form-control" required = "required" name="type" id="editType">
-              <option value="">نوع پرداختی را انتخاب کنید</option>
-              <br />
-              <option value = "نقدی">نقدی</option>
-              <br />
-              <option value = "واریزی">واریزی</option>
-              <br />
-            </select>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <label class="form-label text_idb margin_record" for="date">تاریخ پرداختی</label>
-            <input type="text" class="form-control" name="date" placeholder="روز/ماه/سال" id="editDate" required = "required" />
-          </div>
-
-          <div class="col-12 col-md-6">
-            <label class="form-label text_idb margin_record" for="salary">مبلغ پرداختی</label>
-            <input type="number" class="form-control" name="salary" min="1000" max="9000000000" placeholder="1000 تومان" id="editSalary" required = "required" />
-          </div>
-
-          <div class="col-12 text-center margin_record">
-            <button type="submit" class="btn btn-primary me-sm-3 me-1 mt-3" name="edit">
-              <ahref="daily_query.php"> 
-              تایید
-            </button>
-            <button type="reset" class="btn btn-label-secondary mt-3" data-bs-dismiss="modal" aria-label="Close">انصراف</button>
-          </div>
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>
-<!--/ edit daily -->
 
           </div>
           <!-- / Content -->
@@ -834,62 +768,6 @@
 
 <!-- Main JS -->
   <script src="assets/js/main.js"></script>
-
-<!-- Page JS -->
-  <script src = "assets/js/jquery.dataTables.js"> </script>
-  <script src = "assets/js/dataTables.bootstrap.js"> </script>
-  <script src="assets/shamsi/kamadatepicker.min.js"></script>
-
-<!-- shamsi script -->
-  <script>
-    let options = {
-      previousButtonIcon: "assets/shamsi/timeir_prev.png",
-      nextButtonIcon: "assets/shamsi/timeir_next.png",
-      forceFarsiDigits: true,
-      markToday: true,
-      markHolidays: true,
-      highlightSelectedDay: true,
-      sync: true,
-      gotoToday: true
-    }
-    kamaDatepicker('editDate',options);
-  </script>
-
-<!-- edit script -->
-  <script>
-    let editBtns = document.querySelectorAll('.edit');
-    let editID = document.querySelector('#editID');
-    let editTitle = document.querySelector('#editTitle');
-    let editType = document.querySelector('#editType');
-    let editDate = document.querySelector('#editDate');
-    let editSalary = document.querySelector('#editSalary');
-
-    editBtns.forEach(editBtn => {
-      editBtn.addEventListener('click', () => {
-        editID.value = editBtn.dataset.id
-        editTitle.value = editBtn.dataset.title
-        editDate.value = editBtn.dataset.date
-        editSalary.value = editBtn.dataset.salary
-        let typeID;
-        if (editBtn.dataset.type == "نقدی") {
-          typeID = 1;
-        } else {
-          typeID = 2
-        }
-        editType.selectedIndex = typeID
-      })
-    })
-  </script>
-
-<!-- delete script -->
-  <script type = "text/javascript">
-    function confirmationDelete(anchor){
-      var conf = confirm(" آیا مطمئن به حذف این خرجی هستید؟ ");
-      if(conf){
-        window.location = anchor.attr("href");
-      }
-    } 
-  </script>
 
 </body>
 
